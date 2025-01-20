@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import  { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
 import RelatedDoctors from '../components/RelatedDoctors'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import Prescription from '../components/prescription'
 
 const Appointment = () => {
 
@@ -159,6 +160,7 @@ const Appointment = () => {
                 </div>
             </div>
 
+            <Prescription/>
             {/* Booking slots */}
             <div className='sm:ml-72 sm:pl-4 mt-8 font-medium text-[#565656]'>
                 <p >Booking slots</p>
