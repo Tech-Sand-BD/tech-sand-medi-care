@@ -1,5 +1,6 @@
-import { Stethoscope } from 'lucide-react';
-import { QRCodeComponent } from './QRCode'; 
+import { Stethoscope } from "lucide-react";
+import { QRCodeComponent } from "./QRCode";
+import PrescriptionWrite from "./PrescriptionWrite";
 
 function Prescription() {
   const doctorInfo = {
@@ -9,7 +10,7 @@ function Prescription() {
     chamber: "Medical Center",
     address: "123 Medical Street, City",
     contact: "+1 234-567-8900",
-    hours: "Mon-Fri: 10:00 AM - 8:00 PM"
+    hours: "Mon-Fri: 10:00 AM - 8:00 PM",
   };
 
   // Create a string with doctor's info for QR code
@@ -19,7 +20,7 @@ function Prescription() {
     regNo: doctorInfo.regNo,
     contact: doctorInfo.contact,
     chamber: doctorInfo.chamber,
-    address: doctorInfo.address
+    address: doctorInfo.address,
   });
 
   return (
@@ -28,7 +29,9 @@ function Prescription() {
         {/* Header */}
         <div className="flex justify-between items-start border-b pb-4">
           <div className="flex-1">
-            <h1 className="text-2xl font-bold text-indigo-800">{doctorInfo.name}</h1>
+            <h1 className="text-2xl font-bold text-indigo-800">
+              {doctorInfo.name}
+            </h1>
             <div className="text-sm text-gray-600">
               <p>{doctorInfo.qualifications}</p>
               <p>Specialist in Cardiology and Medicine</p>
@@ -37,9 +40,9 @@ function Prescription() {
           </div>
           <div className="flex items-center gap-4">
             <Stethoscope className="w-12 h-12 text-indigo-800" />
-            <img 
-              src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=64&h=64" 
-              alt="Hospital Logo" 
+            <img
+              src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=64&h=64"
+              alt="Hospital Logo"
               className="w-16 h-16 object-contain"
             />
           </div>
@@ -67,7 +70,7 @@ function Prescription() {
               <h2 className="font-bold mb-2">Clinical Complaints:</h2>
               <div className="border-b border-gray-300 h-32"></div>
             </div>
-            
+
             <div>
               <h2 className="font-bold mb-2">Risk Factors:</h2>
               <ul className="space-y-1 text-sm">
@@ -92,8 +95,9 @@ function Prescription() {
           </div>
 
           <div className="col-span-8">
-            <div className="border border-gray-200">
-              <table className="w-full">
+            <div className="border rounded-md border-gray-200">
+              <PrescriptionWrite />
+              {/* <table className="w-full">
                 <thead>
                   <tr className="border-b">
                     <th className="p-2 border-r text-sm">Medicine</th>
@@ -116,13 +120,14 @@ function Prescription() {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </table> */}
             </div>
           </div>
         </div>
-          <p className='text-sm text-gray-600 text-right'>__  Day / Week / Month later revisit</p>
+        <p className="text-sm text-gray-600 text-right">
+          __ Day / Week / Month later revisit
+        </p>
 
-                  
         {/* Footer */}
         <div className="mt-8 pt-4 border-t flex justify-between items-end">
           <div className="text-sm text-gray-600">
