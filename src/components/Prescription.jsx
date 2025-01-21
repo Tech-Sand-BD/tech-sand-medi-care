@@ -24,7 +24,7 @@ function Prescription() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-8 my-4">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center lg:p-8 lg:my-4">
       <div className="w-full max-w-4xl bg-white shadow-lg p-8">
         {/* Header */}
         <div className="flex justify-between items-start border-b pb-4">
@@ -64,8 +64,8 @@ function Prescription() {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-12 gap-8">
-          <div className="col-span-4 space-y-6">
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-4 grid-cols-1 space-y-6">
             <div>
               <h2 className="font-bold mb-2">Clinical Complaints:</h2>
               <div className="border-b border-gray-300 h-32"></div>
@@ -94,7 +94,7 @@ function Prescription() {
             </div>
           </div>
 
-          <div className="col-span-8">
+          <div className="lg:col-span-8 grid-cols-1">
             <div className="border rounded-md border-gray-200">
               <PrescriptionWrite />
               {/* <table className="w-full">
