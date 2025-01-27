@@ -29,15 +29,15 @@ export default function PrePrescription() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg my-8">
+    <div className="min-h-screen bg-gray-50 px-4 py-6 md:py-8">
+      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg">
         {/* <PrescriptionHeader 
           doctorInfo={prescription.doctorInfo}
           onUpdate={updateDoctorInfo}
         /> */}
         
-        <div className="grid grid-cols-2 gap-4">
-          <div className="border-r border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+          <div>
             <EditableList
               title="Symptoms"
               items={prescription.symptoms}

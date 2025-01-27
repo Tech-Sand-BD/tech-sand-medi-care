@@ -20,18 +20,18 @@ export function EditableList({ title, items, onUpdate }) {
       <h2 className="text-lg font-semibold text-indigo-600 mb-3">{title}</h2>
       <div className="space-y-2">
         {items.map((item, index) => (
-          <div key={index} className="flex items-center gap-2 group">
-            <span className="w-2 h-2 bg-indigo-500 rounded-full" />
-            <span className="flex-grow">{item}</span>
+          <div key={index} className="flex items-center gap-2 group bg-gray-50 p-2 rounded-lg">
+            <span className="w-2 h-2 bg-indigo-500 rounded-full flex-shrink-0" />
+            <span className="flex-grow break-words">{item}</span>
             <button
               onClick={() => removeItem(index)}
-              className="opacity-0 group-hover:opacity-100 transition-opacity text-red-500 hover:text-red-700"
+              className="text-red-500 hover:text-red-700 transition-colors"
             >
               <X size={16} />
             </button>
           </div>
         ))}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 mt-4">
           <input
             type="text"
             value={newItem}
@@ -42,7 +42,7 @@ export function EditableList({ title, items, onUpdate }) {
           />
           <button
             onClick={addItem}
-            className="text-indigo-500 hover:text-indigo-700 transition-colors"
+            className="text-indigo-500 hover:text-indigo-700 transition-colors flex-shrink-0"
           >
             <Plus size={20} />
           </button>
