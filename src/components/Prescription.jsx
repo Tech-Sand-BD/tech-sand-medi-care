@@ -1,6 +1,7 @@
 import { Stethoscope } from "lucide-react";
 import { QRCodeComponent } from "./QRCode";
 import PrescriptionWrite from "./PrescriptionWrite";
+import PrePrescription from "./PrePrescription";
 
 function Prescription() {
   const doctorInfo = {
@@ -64,69 +65,10 @@ function Prescription() {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-4 grid-cols-1 space-y-6">
-            <div>
-              <h2 className="font-bold mb-2">Clinical Complaints:</h2>
-              <div className="border-b border-gray-300 h-32"></div>
-            </div>
-
-            <div>
-              <h2 className="font-bold mb-2">Risk Factors:</h2>
-              <ul className="space-y-1 text-sm">
-                <li>O/E-</li>
-                <li>Pulse-</li>
-                <li>BP-</li>
-                <li>Heart-</li>
-                <li>Lung-</li>
-                <li>Others-</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-bold mb-2">Investigations:</h2>
-              <ul className="text-sm space-y-1">
-                <li>ECG, CXR (P/A)</li>
-                <li>Echo 2D/Doppler</li>
-                <li>CBC, RBS, S. TSH</li>
-                <li>S. Creatine, HbA1C</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="lg:col-span-8 grid-cols-1">
-            <div className="border rounded-md border-gray-200">
-              <PrescriptionWrite />
-              {/* <table className="w-full">
-                <thead>
-                  <tr className="border-b">
-                    <th className="p-2 border-r text-sm">Medicine</th>
-                    <th className="p-2 border-r text-sm">Morning</th>
-                    <th className="p-2 border-r text-sm">Noon</th>
-                    <th className="p-2 border-r text-sm">Night</th>
-                    <th className="p-2 border-r text-sm">Before</th>
-                    <th className="p-2 text-sm">After</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[...Array(10)].map((_, i) => (
-                    <tr key={i} className="border-b">
-                      <td className="p-2 border-r">&nbsp;</td>
-                      <td className="p-2 border-r">&nbsp;</td>
-                      <td className="p-2 border-r">&nbsp;</td>
-                      <td className="p-2 border-r">&nbsp;</td>
-                      <td className="p-2 border-r">&nbsp;</td>
-                      <td className="p-2">&nbsp;</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table> */}
-            </div>
-          </div>
+        <div>
+          <PrePrescription/>
         </div>
-        <p className="text-sm text-gray-600 text-right">
-          __ Day / Week / Month later revisit
-        </p>
+        
 
         {/* Footer */}
         <div className="mt-8 pt-4 border-t flex justify-between items-end">
