@@ -7,19 +7,16 @@ const Footer = () => {
         <div>
           <Link to="/">
             <h1 className="text-[18px] cursor-pointer md:text-2xl">
-              Tech Sand
+              Tech Sand MediCare
             </h1>
           </Link>
           <p className="w-full md:w-2/3 text-gray-600 leading-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic vel
-            error minus illum, inventore, repudiandae amet quae ut cupiditate,
-            odio totam? Blanditiis, quo facilis aspernatur amet officia maiores
-            deleniti nam.
-          </p>
+            Your trusted platform for online doctor appointments and healthcare management.
+            Find your doctor, book appointments, and manage your health with Tech Sand MediCare.         </p>
         </div>
 
         <div>
-          <p className="text-xl font-medium mb-5">COMPANY</p>
+          <p className="text-xl font-medium mb-5">Tech Sand MediCare</p>
           <ul className="flex flex-col gap-2 text-gray-600">
             <li>Home</li>
             <li>About Us</li>
@@ -30,8 +27,8 @@ const Footer = () => {
         <div>
           <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
           <ul className="flex flex-col gap-2 text-gray-600">
-            <li>+880 123456789</li>
-            <li>techsand@gmail.com</li>
+            <li>+880 1557711220</li>
+            <li>amishezanmahmud@gmail.com</li>
           </ul>
         </div>
       </div>

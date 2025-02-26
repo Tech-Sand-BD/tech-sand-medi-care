@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Plus, X, Edit2 } from 'lucide-react';
 
-export function MedicineList({ medicines, onUpdate }) {
+export function MedicineList({ medicines, onUpdate, options, onSelect, onRemove }) {
   const [editingId, setEditingId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const addMedicine = () => {
     const newMedicine = {
@@ -31,8 +32,8 @@ export function MedicineList({ medicines, onUpdate }) {
 
   const calculateEndDate = (medicine) => {
     const date = new Date();
-    const days = medicine.duration.unit === 'weeks' 
-      ? medicine.duration.value * 7 
+    const days = medicine.duration.unit === 'weeks'
+      ? medicine.duration.value * 7
       : medicine.duration.value;
     date.setDate(date.getDate() + days);
     return date.toLocaleDateString();
@@ -56,7 +57,7 @@ export function MedicineList({ medicines, onUpdate }) {
           placeholder="1+1+1"
         />
       </div>
-      
+
       <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 text-sm text-gray-600">
         <div className="flex items-center gap-2 w-full md:w-auto">
           <span>Take for:</span>
@@ -81,7 +82,7 @@ export function MedicineList({ medicines, onUpdate }) {
             <option value="weeks">weeks</option>
           </select>
         </div>
-        
+
         <select
           value={medicine.timing}
           onChange={(e) => updateMedicine(medicine.id, 'timing', e.target.value)}
@@ -113,13 +114,38 @@ export function MedicineList({ medicines, onUpdate }) {
     </div>
   );
 
+  const filteredOptions = options.filter(option =>
+    option.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Rx</h2>
-      <div className="space-y-4">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="w-full p-2 border border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none"
+        placeholder="Search medicines..."
+      />
+      <ul className="mt-2">
+        {filteredOptions.map((option, index) => (
+          <li
+            key={index}
+            onClick={() => {
+              onSelect(option);
+              setSearchTerm('');
+            }}
+            className="cursor-pointer p-2 hover:bg-indigo-100 rounded-lg"
+          >
+            {option}
+          </li>
+        ))}
+      </ul>
+      <div className="space-y-4 mt-4">
         {medicines.map((medicine) => (
-          <div 
-            key={medicine.id} 
+          <div
+            key={medicine.id}
             className="group relative bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-all border border-gray-100"
           >
             <div className="absolute right-2 top-2 flex gap-2">
@@ -145,11 +171,11 @@ export function MedicineList({ medicines, onUpdate }) {
                 <X size={16} />
               </button>
             </div>
-            
+
             {editingId === medicine.id ? renderEditableCard(medicine) : renderViewCard(medicine)}
           </div>
         ))}
-        
+
         <button
           onClick={addMedicine}
           className="w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-indigo-500 hover:text-indigo-500 transition-colors flex items-center justify-center gap-2"

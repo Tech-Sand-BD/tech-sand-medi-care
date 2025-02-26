@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-[#ADADAD]">
       <Link to="/">
-        <h1 className="text-[18px] cursor-pointer md:text-2xl">Tech Sand</h1>
+        <h1 className="text-[18px] cursor-pointer md:text-2xl">Tech Sand MediCare</h1>
       </Link>
       <ul className="md:flex items-start gap-5 font-medium hidden">
         <NavLink to={"/"}>
@@ -89,9 +89,8 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden ${
-            showMenu ? "fixed w-full" : "h-0 w-0"
-          } right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}
+          className={`md:hidden ${showMenu ? "fixed w-full" : "h-0 w-0"
+            } right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}
         >
           <div className="flex items-center justify-between px-5 py-6">
             <Link to="/">

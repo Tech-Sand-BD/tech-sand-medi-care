@@ -3,15 +3,15 @@ import { QRCodeComponent } from "./QRCode";
 import PrescriptionWrite from "./PrescriptionWrite";
 import PrePrescription from "./PrePrescription";
 
-function Prescription() {
+function Prescription({ docInfo }) {
   const doctorInfo = {
-    name: "Dr.Emily Larsen",
-    qualifications: "MBBS, MD (Gynecologist)",
-    regNo: "A12345",
-    chamber: "Medical Center",
-    address: "123 Medical Street, City",
-    contact: "+1 234-567-8900",
-    hours: "Mon-Fri: 10:00 AM - 8:00 PM",
+    name: docInfo.name,
+    qualifications: docInfo.degree,
+    regNo: docInfo.regNo,
+    chamber: docInfo.address.line1,
+    address: `${docInfo.address.line1}, ${docInfo.address.line2}`,
+    contact: docInfo.phone,
+    hours: docInfo.hours,
   };
 
   // Create a string with doctor's info for QR code
@@ -24,6 +24,26 @@ function Prescription() {
     address: doctorInfo.address,
   });
 
+  const printWithoutHeaderFooter = () => {
+    const content = document.querySelector(".w-full.max-w-4xl.bg-white.shadow-lg.p-8").innerHTML;
+    const printWindow = window.open("", "", "width=800,height=600");
+    printWindow.document.write("<html><head><title>Print</title></head><body>");
+    printWindow.document.write(content);
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.print();
+  };
+
+  const printWithHeaderFooter = () => {
+    const content = document.querySelector(".prescription").innerHTML;
+    const printWindow = window.open("", "", "width=800,height=600");
+    printWindow.document.write("<html><head><title>Print</title></head><body>");
+    printWindow.document.write(content);
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.print();
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center lg:p-8 lg:my-4">
       <div className="w-full max-w-4xl bg-white shadow-lg p-8">
@@ -35,14 +55,14 @@ function Prescription() {
             </h1>
             <div className="text-sm text-gray-600">
               <p>{doctorInfo.qualifications}</p>
-              <p>Specialist in Cardiology and Medicine</p>
+              <p>Specialist in {docInfo.speciality}</p>
               <p>Reg. No: {doctorInfo.regNo}</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
             <Stethoscope className="w-12 h-12 text-indigo-800" />
             <img
-              src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=64&h=64"
+              src=""
               alt="Hospital Logo"
               className="w-16 h-16 object-contain"
             />
@@ -65,10 +85,9 @@ function Prescription() {
           </div>
         </div>
 
-        <div>
-          <PrePrescription/>
+        <div className="prescription">
+          <PrePrescription />
         </div>
-        
 
         {/* Footer */}
         <div className="mt-8 pt-4 border-t flex justify-between items-end">
@@ -87,7 +106,23 @@ function Prescription() {
             </div>
           </div>
         </div>
+        <div className="p-4 flex justify-end space-x-4">
+          <button
+            onClick={printWithoutHeaderFooter}
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+          >
+            Print Without Header/Footer
+          </button>
+          <button
+            onClick={printWithHeaderFooter}
+            className="bg-green-500 text-white px-4 py-2 rounded-lg"
+          >
+            Print With Header/Footer
+          </button>
+        </div>
       </div>
+
+
     </div>
   );
 }
